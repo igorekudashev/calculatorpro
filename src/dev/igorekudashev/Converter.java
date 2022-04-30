@@ -1,14 +1,12 @@
 package dev.igorekudashev;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
 public class Converter {
 
-    private static final String[] romanNumbers = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI", "X"};
-
-    private static final TreeMap<Integer, String> arabicToRomanMap = new TreeMap<>() {{
+    private static final List<String> romanNumerals = List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI", "X");
+    private static final TreeMap<Integer, String> numeralsMap = new TreeMap<>() {{
         put(100, "C");
         put(90, "XC");
         put(50, "L");
@@ -21,21 +19,16 @@ public class Converter {
     }};
 
     public static int romanToArabic(String romanNumber) {
-        List<String> test = new ArrayList<>();
-
-
-        for (int i = 0; i < romanNumbers.length; i++) {
-            if (romanNumbers[i].equals(romanNumber.toUpperCase())) {
-                return i + 1;
-            }
-        }
-        throw new IllegalArgumentException();
+        int index = romanNumerals.indexOf(romanNumber);
+        if (index == -1) throw new IllegalArgumentException();
+        else return index + 1;
     }
 
     public static String arabicToRoman(int arabicNumber) {
-        int floorValue = arabicToRomanMap.floorKey(arabicNumber);
+        if (arabicNumber <= 1) throw new IllegalArgumentException();
+        int floorValue = numeralsMap.floorKey(arabicNumber);
         return arabicNumber == floorValue
-                ? arabicToRomanMap.get(arabicNumber)
-                : arabicToRomanMap.get(floorValue) + arabicToRoman(arabicNumber - floorValue);
+                ? numeralsMap.get(arabicNumber)
+                : numeralsMap.get(floorValue) + arabicToRoman(arabicNumber - floorValue);
     }
 }
