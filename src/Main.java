@@ -1,11 +1,5 @@
-package dev.igorekudashev;
-
-import java.util.List;
-import java.util.Scanner;
-import java.util.TreeMap;
-
+import java.util.*;
 public class Main {
-    private static final List<String> romanNumerals = List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI", "X");
     private static final TreeMap<Integer, String> numeralsMap = new TreeMap<>() {{
         int[] arabs = {100, 90, 50, 40, 10, 9, 5, 4, 1};
         String[] romans = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -33,7 +27,7 @@ public class Main {
         };
     }
     private static int romanToArabic(String romanNumber) {
-        int index = romanNumerals.indexOf(romanNumber);
+        int index = List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI", "X").indexOf(romanNumber);
         if (index == -1) throw new IllegalArgumentException();
         else return index + 1;
     }
