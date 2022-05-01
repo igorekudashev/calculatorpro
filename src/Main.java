@@ -24,9 +24,8 @@ public class Main {
         };
     }
     private static int romanToArabic(String romanNumber) {
-        int index = List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI", "X").indexOf(romanNumber);
-        if (index == -1) throw new IllegalArgumentException();
-        else return index + 1;
+        if (!List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI", "X").contains(romanNumber)) throw new IllegalArgumentException();
+        else return List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI", "X").indexOf(romanNumber) + 1;
     }
     private static String arabicToRoman(int arabicNumber) {
         if (arabicNumber <= 1) throw new IllegalArgumentException();
