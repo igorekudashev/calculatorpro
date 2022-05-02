@@ -32,7 +32,7 @@ public class Main {
         else return index + 1;
     }
     private static String arabicToRoman(int arabicNumber) {
-        if (arabicNumber <= 1) throw new IllegalArgumentException();
+        if (arabicNumber <= 0) throw new IllegalArgumentException();
         int floorValue = numeralsMap.floorKey(arabicNumber);
         return arabicNumber == floorValue ? numeralsMap.get(arabicNumber) : numeralsMap.get(floorValue) + arabicToRoman(arabicNumber - floorValue);
     }
