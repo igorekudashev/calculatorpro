@@ -12,7 +12,7 @@ public class Main {
         try {
             return String.valueOf(apply(Integer.parseInt(parts[0]), Integer.parseInt(parts[2]), parts[1]));
         } catch (NumberFormatException ignored) {
-            return arabicToRoman(apply(romans.lastIndexOf(parts[0]) + 1, romans.lastIndexOf(parts[2]) + 1, parts[1]));
+            return arabicToRoman(apply(romans.indexOf(parts[0]) + 1, romans.indexOf(parts[2]) + 1, parts[1]));
         }
     }
     private static int apply(int a, int b, String operation) {
